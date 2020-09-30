@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="utf-8"/>
@@ -36,7 +36,7 @@
             <td th:text="${product.price}"/>
             <td><a class="btn btn-outline-info" th:href="@{'/info/' + ${product.id}}">info</a></td>
             <td><a class="btn btn-outline-success" th:href="@{'/cart/add/' + ${product.id}}"><b>put to cart</b></a></td>
-            <td><a class="btn btn-outline-danger" th:href="@{'/products/delete/' + ${product.id}}">delete</a></td>
+            <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-outline-danger" th:href="@{'/products/delete/' + ${product.id}}">delete</a></td>
         </tr>
         </tbody>
     </table>

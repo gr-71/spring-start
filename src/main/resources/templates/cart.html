@@ -18,8 +18,8 @@
     <div th:replace="~{navigation :: navigation(Cart)}" />
 
     <h1><b>Cart</b></h1>
-    <span th:if="${products.size() == 0}">Cart is empty now</span>
-    <table th:if="${products.size() > 0}" class="table table-hover">
+    <span th:if="${positions.size() == 0}">Cart is empty now</span>
+    <table th:if="${positions.size() > 0}" class="table table-hover">
         <thead class="thead-dark">
         <tr>
             <td><b>ID</b></td>
@@ -28,13 +28,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="product : ${products}">
-            <td th:text="${product.id}"/>
-            <td th:text="${product.title}"/>
-            <td th:text="${product.price}"/>
+        <tr th:each="position : ${positions}">
+            <td th:text="${position.product.id}"/>
+            <td th:text="${position.product.title}"/>
+            <td th:text="${position.product.price}"/>
         </tr>
         </tbody>
     </table>
+    <a th:if="${positions.size() > 0}" class="btn btn-outline-success" th:href="@{/cart/make-order}">Make the order</a>
 </div>
 </body>
 </html>

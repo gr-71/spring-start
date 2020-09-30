@@ -1,5 +1,6 @@
 package com.rga.springwebapp.utils;
 
+import com.rga.springwebapp.domain.OrderPosition;
 import com.rga.springwebapp.domain.Product;
 import com.rga.springwebapp.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import java.util.List;
 @Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Cart {
-    private List<Product> products;
+    private List<OrderPosition> positions;
 
     private ProductService productService;
 
@@ -24,17 +25,19 @@ public class Cart {
         this.productService = productService;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<OrderPosition> getPositions() {
+        return positions;
     }
 
     @PostConstruct
     public void init() {
-        products = new ArrayList<>();
+        positions = new ArrayList<>();
     }
 
     public void addProductById(Long id) {
         Product product = productService.getProductById(id);
-        products.add(product);
+        OrderPosition orderPosition = new OrderPosition();
+        orderPosition.setProduct(product);
+        positions.add(orderPosition);
     }
 }

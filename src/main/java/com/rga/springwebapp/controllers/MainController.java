@@ -18,6 +18,11 @@ public class MainController {
 
     private ProductService productService;
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @Autowired
     public void setProductService(ProductService productService) {
         this.productService = productService;
