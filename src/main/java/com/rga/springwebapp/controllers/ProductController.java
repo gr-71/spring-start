@@ -52,7 +52,7 @@ public class ProductController {
 
     private void checkById(@PathVariable Long id) {
         if(!productDao.existsById(id)){
-            throw new EntityNotFoundException("Product", id, "Product not found");
+            throw new EntityNotFoundException("Product", id, "Product is not found");
         }
     }
 

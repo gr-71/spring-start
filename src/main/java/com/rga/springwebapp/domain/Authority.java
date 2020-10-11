@@ -1,7 +1,14 @@
 package com.rga.springwebapp.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "authorities")
 public class Authority {
@@ -14,22 +21,4 @@ public class Authority {
     @JoinColumn(name = "username")
     private User user;
 
-    public Authority() {
-    }
-
-    public String getAuthority() {
-        return authority;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setAuthority(String authority) {
-        this.authority = authority;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

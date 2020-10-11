@@ -1,7 +1,14 @@
 package com.rga.springwebapp.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "order_positions")
 public class OrderPosition {
@@ -17,31 +24,4 @@ public class OrderPosition {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
-
-    public OrderPosition() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 }
